@@ -1,0 +1,48 @@
+﻿extends layout
+
+block content
+    body#myPage(data-spy="scroll",data-target=".navbar",data-offset="60")
+        .container
+            nav.navbar.navbar-default.navbar-fixed-top
+                .container
+                    include ./navbar.jade
+            .container-fluid
+                .row
+                    .col-sm-12.text-left
+                        h1.header-dim.well Profile
+                        p.lead    
+                    
+                        .col-sm-4
+                            p.text-center Click to upload profile image
+                            a(onclick="window.location.href='/updateprofilepic/#{profile._id}';return false;")
+                                img.profile-img.img-responsive(src="/images/profile/#{profile.userprofilepic}",alt="profile picture")
+                            h3.text-center.profile-fullname #{profile.userfullname}
+                            a(href="/update/#{profile._id}")
+                                button.btn.btn-primary.side-button Edit Profile
+                            p
+                            a(href="/changepassword/#{profile._id}")
+                                button.btn.btn-primary.side-button Change Password
+                        .col-sm-6
+                            h2.uppercase(style="color:#060606") #{profile.userrole}
+                                span      
+                                span(style="color:#1f1f1f;font-size:12px;font-style:italic;text-transform: lowercase;") #{profile.username}
+                            if(!profile.active && user.username == "admin")
+                                p.red inactive    
+                                    span
+                                        a(onclick="confirmActiveUser()")
+                                            button.btn.btn-primary Active user
+                            p member since
+                                span      
+                                span#rawJoinSince.hidden #{profile.created_at}
+                                span#joinSince.profile-sub-text 12 jan 2015
+                            p Contact : 
+                                span.profile-sub-text #{profile.usercontact}
+                            p Email : 
+                                span.profile-sub-text #{profile.useremail}
+                            p Address : 
+                                span.profile-sub-text #{profile.useraddress} , #{profile.userpostcode} , #{profile.userstate} , #{profile.usercountry}
+    script.
+        userid="#{profile._id}";
+    script(src="../javascripts/moment.js")
+    script(src="../javascripts/profile.js")
+        

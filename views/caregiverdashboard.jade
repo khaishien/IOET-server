@@ -1,0 +1,114 @@
+﻿extends layout
+block content
+    script(src='/javascripts/moment.js')
+    .container
+        nav.navbar.navbar-default.navbar-fixed-top
+                .container
+                    include ./navbar.jade
+        .container-fluid
+            .row
+                h1.header-dim.well Caregiver Dashboard 
+                p.lead -----------------------
+                br
+            .row
+                .col-md-3
+                    a(href="/caregiver/addelderly")
+                        button.btn.btn-primary.side-button Add Elderly
+                .col-md-3
+                    a(href="/caregiver/searchelderly")
+                        button.btn.btn-primary.side-button Search Elderly
+                   
+            p
+            ul.nav.nav-tabs
+                li.active
+                    a(data-toggle="tab",href="#sentrequest") Request Sent List
+                li
+                    a(data-toggle="tab",href="#pendingrequest") Request Pending List
+                li
+                    a(data-toggle="tab",href="#elderly") Monitored List
+
+            div.tab-content
+                div#sentrequest.tab-pane.fade.in.active
+                    .row
+                        .col-md-12
+                            .table-responsive
+                                table.table.table-hover
+                                    thead
+                                        tr
+                                            th Elderly Name
+                                            th Sent At
+                                    tbody
+                                        each item in sentrequest
+                                            tr
+                                                td
+                                                    a(href='/profile/'+item.elderlyid._id)
+                                                        span #{item.elderlyid.userfullname}
+                                                td=moment(item.timestamp).format('DD/MM/YY hh:mm:ss a')
+                                                    
+
+                div#pendingrequest.tab-pane.fade.in
+                    .row
+                        .col-md-12
+                            .table-responsive
+                                table.table.table-hover
+                                    thead
+                                        tr
+                                            th Elderly Name
+                                            th Requested At
+                                            th
+                                    tbody
+                                        each item in pendingrequest
+                                            tr
+                                                td
+                                                    a(href='/profile/'+item.elderlyid._id)
+                                                        span #{item.elderlyid.userfullname}
+                                                td=moment(item.timestamp).format('DD/MM/YY hh:mm:ss a')
+                                                td
+                                                    a(onclick="acceptrequest('#{item._id}');")
+                                                        button.btn.btn-primary Accept Request
+
+                                            
+            
+                div#elderly.tab-pane.fade.in          
+                    .row
+                        .col-md-12
+                            h3 Elderly Monitor List Under
+                                span    
+                                span(style="color:#060606;font-size:25px;font-style: bold;") #{user.userfullname}
+                            .table-responsive
+                                table.table.table-hover
+                                    thead
+                                        tr
+                                            th Full Name
+                                            th Relationship
+                                            th Last login time
+                                            th Indoor location
+                                            th Outdoor Location (Lat,Lng)
+                                            th Latest Location
+                                            th Status
+                                    tbody
+                                        each item in trackList
+                                            tr
+                                                td=item.elderlyid.userfullname
+                                                td=item.relationship
+                                                if(item.elderlyid.login_at)
+                                                    td=moment(item.elderlyid.login_at).format('DD/MM/YY hh:mm:ss a')
+                                                else
+                                                    td
+                                                if(item.indoor)
+                                                    td=item.indoor.zoneid.locationname
+                                                else
+                                                    td
+                                                if(item.outdoor)
+                                                    td
+                                                        a(href='/caregiver/elderlylocation/'+item.outdoor.latitude+'/'+item.outdoor.longitude) click me
+                                                            //span #{item.outdoor.latitude}
+                                                            //span ,
+                                                            //span #{item.outdoor.longitude}
+                                                else
+                                                    td
+                                                td=item.latestposition
+                                                td=item.status
+
+            
+    script(src="../javascripts/admindashboard.js")

@@ -1,0 +1,350 @@
+body {
+    font: 400 15px Lato, sans-serif;
+    line-height: 1.8;
+    color: #818181;
+    font-family: Montserrat, sans-serif;
+}
+
+h2 {
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #303030;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    color: #303030;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.jumbotron {
+    background-color: #3F51B5;
+    color: #fff;
+    padding: 100px 25px;
+    font-family: Montserrat, sans-serif;
+}
+
+    .jumbotron h1 {
+        max-width: 700px;
+        margin: auto;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+.container-fluid {
+    padding: 60px 50px;
+}
+
+.header-dim {
+    background-color: #E8EAF6 !important;
+}
+
+.bg-dim {
+    background-color: #E8EAF6;
+}
+
+.logo-small {
+    color: #3F51B5;
+    font-size: 50px;
+}
+
+.logo {
+    color: #3F51B5;
+    font-size: 200px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.bg-img{
+    position: relative;
+    background-image: url(/images/pocketfinder-slider-6.jpg);
+    background-size: cover;
+    background-position: left;
+    height: 612px;
+    color: #000000;
+}
+
+.bg-img .title{
+    position: relative;
+    font-size: 40px;
+    width: 54%;
+    top: 50%;
+    left: 46%;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.side-button {
+    width: 100%;
+}
+
+.profile-sub-text {
+    color: #060606;
+    font-size: 15px;
+}
+
+.profile-img {
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
+    border: 2px solid #E8EAF6;
+    padding: 8px;
+    width: 250px;
+    height: 250px;
+    box-shadow: 2px 2px 14px black;
+}
+
+    .profile-img:hover {
+        opacity: 0.4;
+        filter: alpha(opacity=40); /* For IE8 and earlier */
+    }
+
+.thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+}
+
+    .thumbnail img {
+        width: 100%;
+        height: 100%;
+        margin-bottom: 10px;
+    }
+
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: #f4511e;
+}
+
+.carousel-indicators li {
+    border-color: #f4511e;
+}
+
+    .carousel-indicators li.active {
+        background-color: #f4511e;
+    }
+
+.item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+}
+
+.item span {
+    font-style: normal;
+}
+
+.panel {
+    border: 1px solid #3F51B5;
+    border-radius: 0 !important;
+    transition: box-shadow 0.5s;
+}
+
+    .panel:hover {
+        box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+    }
+
+.panel-footer .btn:hover {
+    border: 1px solid #f4511e;
+    background-color: #fff !important;
+    color: #3F51B5;
+}
+
+.panel-heading {
+    color: #fff !important;
+    background-color: #3F51B5 !important;
+    padding: 25px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.panel-footer {
+    background-color: white !important;
+}
+
+    .panel-footer h3 {
+        font-size: 32px;
+    }
+
+    .panel-footer h4 {
+        color: #aaa;
+        font-size: 14px;
+    }
+
+    .panel-footer .btn {
+        margin: 15px 0;
+        background-color: #3F51B5;
+        color: #fff;
+    }
+
+.navbar {
+    margin-bottom: 0;
+    background-color: #3F51B5;
+    z-index: 9999;
+    border: 0;
+    font-size: 12px !important;
+    line-height: 1.42857143 !important;
+    letter-spacing: 4px;
+    border-radius: 0;
+}
+
+    .navbar li a, .navbar .navbar-brand {
+        color: #fff !important;
+    }
+
+.navbar-nav li a:hover, .navbar-nav li.active a {
+    color: #3F51B5 !important;
+    background-color: #E8EAF6 !important;
+}
+
+.navbar-nav .open a {
+    color: #3F51B5 !important;
+    background-color: #E8EAF6 !important;
+}
+
+.navbar-nav li .dropdown-menu {
+    background-color: #E8EAF6 !important;
+}
+
+    .navbar-nav li .dropdown-menu li a:hover {
+        color: #E8EAF6 !important;
+        background-color: #3F51B5 !important;
+    }
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #fff !important;
+}
+
+footer .glyphicon {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #3F51B5;
+}
+
+.slideanim {
+    visibility: hidden;
+}
+
+.slide {
+    animation-name: slide;
+    -webkit-animation-name: slide;
+    animation-duration: 1s;
+    -webkit-animation-duration: 1s;
+    visibility: visible;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}
+
+.hidden {
+    display: none;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+/* layout.css Style */
+.upload-drop-zone {
+    height: 200px;
+    border-width: 2px;
+    margin-bottom: 20px;
+}
+
+/* skin.css Style*/
+.upload-drop-zone {
+    color: #ccc;
+    border-style: dashed;
+    border-color: #ccc;
+    line-height: 200px;
+    text-align: center;
+}
+
+    .upload-drop-zone.drop {
+        color: #222;
+        border-color: #222;
+    }
+
+
+.image-blurred-edge {
+    background-image: url(/images/elderly_man.jpg);
+    width: 350px;
+    height: 250px;
+    /* you need to match the shadow color to your background or image border for the desired effect*/
+    box-shadow: 0 0 8px 8px white inset;
+}
+
+.new-line{
+    display: block;
+}
+
+@keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
+}
+
+@-webkit-keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateY(70%);
+    }
+
+    100% {
+        opacity: 1;
+        -webkit-transform: translateY(0%);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .col-sm-4 {
+        text-align: center;
+        margin: 25px 0;
+    }
+
+    .btn-lg {
+        width: 100%;
+        margin-bottom: 35px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .logo {
+        font-size: 150px;
+    }
+}

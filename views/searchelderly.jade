@@ -1,0 +1,72 @@
+﻿extends layout
+block content
+    .container
+        nav.navbar.navbar-default.navbar-fixed-top
+                .container
+                    include ./navbar.jade
+        .container-fluid
+            .row
+                h1.header-dim.well Caregiver Dashboard 
+                p.lead -----------------------
+                br
+            .row
+                .col-md-6
+                    h2 Search elderly
+                    form#searchelderlyform(role="search",method="post",action="/caregiver/searchelderly")
+                        .input-group.col-md-12
+                            if(search_term)
+                                input.form-control(type='text',placeholder="Search",name="s",id="s",value="#{search_term}",autocomplete="off")
+                            else
+                                input.form-control(type='text',placeholder="Search",name="s",id="s",autocomplete="off")
+                            span.input-group-btn
+                                button.btn.btn-default(type='submit')
+                                    i.glyphicon.glyphicon-search
+            .row
+                h3 Elderly List
+                .col-md-12
+                    .table-responsive
+                        if(user.userrole == 'admin')
+                            table.table.table-hover
+                                thead
+                                    tr
+                                        th Full Name
+                                        th Email
+                                        th Contact
+                                        th State
+                                        th Monitor by
+                                        th Status
+                                        th 
+
+                                tbody
+                                    if(tracklist)
+                                        each item in tracklist
+                                            tr
+                                                td
+                                                    a(href='/profile/'+item.elderlyid._id) #{item.elderlyid.userfullname}
+                                                td=item.elderlyid.useremail
+                                                td=item.elderlyid.usercontact
+                                                td=item.elderlyid.userstate
+                                                td
+                                                    a(href='/profile/'+item.caregiverid._id) #{item.caregiverid.userfullname}
+                                                if(item.status == true)
+                                                    td active
+                                                else
+                                                    td.red inactive
+                                                
+                                                td
+                                                    a(href='/caregiver/sendrequest/'+item.elderlyid._id) Send Request
+                        else
+                            table.table.table-hover
+                                thead
+                                    tr
+                                        th Full Name
+                                        th
+                                    tbody
+                                        if(userlist)
+                                            each item in userlist
+                                                tr
+                                                    td=item.userfullname
+                                                    td
+                                                        a(href='/caregiver/sendrequest/'+item._id) Send Request
+
+               

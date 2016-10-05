@@ -1,0 +1,101 @@
+﻿extends layout
+   
+block content
+    .container
+        nav.navbar.navbar-default.navbar-fixed-top
+                .container
+                    include ./navbar.jade
+        .container-fluid
+                .row
+                    h1.header-dim.well Profile Update
+                    p.lead --------------------
+                    p * required
+                    br
+                    form#updateform.form-horizontal(role='form', action="/update/#{user._id}",method="post", style='max-width: 700px;')
+            
+                        .form-group.has-feedback
+                            label.col-sm-4(for="username") Username :
+                            .col-sm-8
+                                h4 #{user.username}
+
+                        .form-group.has-feedback
+                            label.col-sm-4(for="userfullname") Full Name : *
+                            .col-sm-8
+                                if(typeof(user.userfullname) !== 'undefined')
+                                    input.form-control(type='text', name="full_name", placeholder='Full Name',id="full_name", autocomplete="off",required,value='#{user.userfullname}')
+                                else
+                                    input.form-control(type='text', name="full_name", placeholder='Full Name',id="full_name", autocomplete="off",required)
+
+
+                        .form-group.has-feedback
+                            label.col-sm-4(for='useremail') Email :
+                            .col-sm-8
+                                if(typeof(user.useremail) !== 'undefined')
+                                    input.form-control(type='email', name="email", placeholder='Email',id="email",required,onchange="valEmail()", value='#{user.useremail}')
+                                else
+                                    input.form-control(type='email', name="email", placeholder='Email',id="email",required,onchange="valEmail()")
+                                span#email_ok.glyphicon.glyphicon-ok.form-control-feedback.hidden
+                                span#email_err.glyphicon.glyphicon-remove.form-control-feedback.hidden
+
+                        .form-group.has-feedback
+                            label.col-sm-4(for='usercontact') Phone Contact :
+                            .col-sm-8
+                                if(typeof(user.usercontact) !== 'undefined')
+                                    input.form-control(type='tel', name="phone", placeholder='000-00000000',id="phone",required,onchange="valPhone()",value='#{user.usercontact}')
+                                else
+                                    input.form-control(type='tel', name="phone", placeholder='000-00000000',id="phone",required,onchange="valPhone()")
+                                span#phone_ok.glyphicon.glyphicon-ok.form-control-feedback.hidden
+                                span#phone_err.glyphicon.glyphicon-remove.form-control-feedback.hidden
+
+                        .form-group
+                            label.col-sm-4(for="address") Address :
+                            .col-sm-8
+                                if(typeof(user.useraddress) !== 'undefined')
+                                    input.form-control(type='text',name='address',placeholder="Street",value="#{user.useraddress}")
+                                else
+                                    input.form-control(type='text',name='address',placeholder="Street")
+
+                        .form-group.has-feedback
+                            label.col-sm-4(for='userpostcode') PostCode :
+                            .col-sm-8
+                                if(typeof(user.userpostcode) !== 'undefined')
+                                    input.form-control(type='number', name="postcode", placeholder='000000', value='#{user.userpostcode}')
+                                else
+                                    input.form-control(type='number', name="postcode", placeholder='00000')
+
+                        .form-group
+                            label.col-sm-4(for='userstate') State :
+                            .col-sm-8
+                                input#selected_state.hidden(type='text',value='#{user.userstate}')
+                                select.form-control(name="state",id="state", placeholder='Please Select State')
+                                    option Selangor
+                                    option Kuala Lumpur
+                                    option Sarawak
+                                    option Johor
+                                    option Penang
+                                    option Sabah
+                                    option Perak
+                                    option Pahang
+                                    option Negeri Sembilan
+                                    option Kedah
+                                    option Malacca
+                                    option Terengganu
+                                    option Kelantan
+                                    option Perlis
+                                    option Labuan
+
+                        .form-group
+                            label.col-sm-4(for="country") Country :
+                            .col-sm-8
+                                input.form-control(type='text',name="country",value="Malaysia",readonly="readonly")
+                    
+                        .pull-right
+                            a(onclick="submitUpdate()")
+                                button.btn.btn-primary(type="button") Update
+       
+                            a(href='/')
+                                button.btn.btn-default(type="button") Cancel
+                        br
+                        h4.red #{info}
+
+    script(src='/javascripts/user.js')

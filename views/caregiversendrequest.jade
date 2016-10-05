@@ -1,0 +1,50 @@
+﻿extends layout
+
+block content
+    .container
+        nav.navbar.navbar-default.navbar-fixed-top
+                .container
+                    include ./navbar.jade
+        .container-fluid
+            .row
+                h1.header-dim.well Send Request
+                p.lead -----------------------
+                br
+            .row
+                .col-md-10
+                    h4.red #{info}
+
+                    form#sendrequestform(role='form',action="/caregiver/sendrequest",method="post")
+                        
+                        .form-group
+                            label.col-sm-4(for="caregiver") Caregiver :
+                            .col-sm-8.input-group
+                                input.hidden(type='text',name='caregiverid',value='#{user._id}')
+                                h4 #{user.userfullname}
+
+                        .form-group
+                            label.col-sm-4(for="elderly") Elderly :
+                            .col-sm-8.input-group
+                                if elderly
+                                    input.hidden(type='text',name='elderlyid',value='#{elderly._id}')
+                                    h4 #{elderly.userfullname}
+                                else
+                                    h4 not found
+
+                        .form-group
+                            label.col-sm-4(for="relationship") Relationship :
+                            .col-sm-8.input-group
+                                select.form-control(name="relationship",placeholder="Select Relationship")
+                                    option parent
+                                    option child
+                                    option spouse
+                                    option sibling
+                                    option grandparents
+                                    option grandchild
+                                    option parent's sibling
+                        .pull-right
+                            a(onclick="document.getElementById('sendrequestform').submit();")
+                                button.btn.btn-primary(type="button") Send
+                                
+                            a(href='/caregiver/dashboard')
+                                button.btn.btn-default(type="button") Cancel

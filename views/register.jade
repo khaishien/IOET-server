@@ -1,0 +1,107 @@
+﻿extends layout
+
+block content
+    .container
+        nav.navbar.navbar-default.navbar-fixed-top
+                .container
+                    include ./navbar.jade
+        .container-fluid
+                .row
+                    h1.header-dim.well Register Page
+                    p.lead -----------------------
+                    a.pull-right(href='/elderly/register')
+                                button.btn.btn-primary(type="button") Elderly?
+                    p * required
+                    br
+                    form#registerform.form-horizontal(role='form', action="/register",method="post", style='max-width: 700px;')
+
+                        .form-group.has-feedback
+                            label.col-sm-4(for="username") Username : *
+                            .col-sm-8
+                                input.form-control(type='text', name="username", placeholder='Username', id="username", required, onchange="valUsername()")
+                                span#username_ok.glyphicon.glyphicon-ok.form-control-feedback.hidden
+                                span#username_err.glyphicon.glyphicon-remove.form-control-feedback.hidden
+
+                        .form-group.has-feedback
+                            label.col-sm-4(for="password") Password : *
+                            .col-sm-8
+                                input.form-control(type='password', name="password", placeholder='Password', id="password", autocomplete="off", onchange="valPassword()",required)
+                                span#password_ok.glyphicon.glyphicon-ok.form-control-feedback.hidden
+                                span#password_err.glyphicon.glyphicon-remove.form-control-feedback.hidden
+                
+                        .form-group.has-feedback
+                            .col-sm-4
+                            .col-sm-8
+                                input.form-control(type='password', name="c_password", placeholder='Confirm Password', id="c_password", autocomplete="off", onchange="confirmPassword()",required)
+                                span#cpassword_ok.glyphicon.glyphicon-ok.form-control-feedback.hidden
+                                span#cpassword_err.glyphicon.glyphicon-remove.form-control-feedback.hidden
+
+                        .form-group.has-feedback
+                            label.col-sm-4(for="full_name") Full Name : *
+                            .col-sm-8
+                                input.form-control(type='text', name="full_name", placeholder='Full Name', id="full_name", autocomplete="off",required)
+
+                        .form-group.has-feedback
+                            label.col-sm-4(for="email") Email : *
+                            .col-sm-8
+                                input.form-control(type='email',name="email",placeholder="Email",id="email",required,onchange="valEmail()")
+                                span#email_ok.glyphicon.glyphicon-ok.form-control-feedback.hidden
+                                span#email_err.glyphicon.glyphicon-remove.form-control-feedback.hidden
+
+                        .form-group.has-feedback
+                            label.col-sm-4(for="phone") Phone Contact : *
+                            .col-sm-8
+                                input.form-control(type='tel',name="phone",placeholder="000-00000000",id="phone",required,onchange="valPhone()")
+                                span#phone_ok.glyphicon.glyphicon-ok.form-control-feedback.hidden
+                                span#phone_err.glyphicon.glyphicon-remove.form-control-feedback.hidden
+
+                        .form-group
+                            label.col-sm-4(for="address") Address :
+                            .col-sm-8
+                                input.form-control(type='text',placeholder="Street 1",id="address1")
+
+                        .form-group
+                            .col-sm-4
+                            .col-sm-8
+                                input.form-control(type='text',placeholder="Street 2",id="address2")
+
+                        .form-group
+                            label.col-sm-4(for="postcode") Postcode :
+                            .col-sm-8
+                                input.form-control(type='number',name="postcode",placeholder="000000")
+
+                        .form-group
+                            label.col-sm-4(for="state") State :
+                            .col-sm-8
+                                select.form-control(name="state",placeholder="Please Select State")
+                                    option Selangor
+                                    option Kuala Lumpur
+                                    option Sarawak
+                                    option Johor
+                                    option Penang
+                                    option Sabah
+                                    option Perak
+                                    option Pahang
+                                    option Negeri Sembilan
+                                    option Kedah
+                                    option Malacca
+                                    option Terengganu
+                                    option Kelantan
+                                    option Perlis
+                                    option Labuan
+
+                        .form-group
+                            label.col-sm-4(for="country") Country :
+                            .col-sm-8
+                                input.form-control(type='text',name="country",value="Malaysia",readonly="readonly")
+                        .pull-right
+                            a(onclick="submit()")
+                                button.btn.btn-primary(type="button") Submit
+       
+                            a(href='/')
+                                button.btn.btn-default(type="button") Cancel
+                        br
+                        h4.red #{info}
+    
+    
+    script(src='../javascripts/user.js')

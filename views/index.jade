@@ -1,0 +1,78 @@
+extends layout
+
+block content
+    body#myPage(data-spy="scroll",data-target=".navbar",data-offset="60")
+        nav.navbar.navbar-default.navbar-fixed-top
+            .container
+                include ./navbar.jade
+        .jumbotron.text-center
+            h1 Know Where They Are
+            p At Any Time, from almost 
+                span.new-line Anywhere in the World!
+                
+            form.form-inline.text-center
+                input.form-control(type="email", size="60", placeholder="Email Address" required)
+                button.btn.btn-info(type="button") Subscribe
+
+
+        #about.container-fluid
+            .row
+                .col-sm-8
+                    h2 About Us
+                    h4 Indoor-Outdoor Elderly Secure and Care System is using a combination of indoor and outdoor positioning which able tracking elderly movement and behavior.
+                    p This solution fully utilizes RFID, NFC, biometric system and GPS provide non-invasive monitoring of elderly positioning and secure their sensitive information from mobile devices. 
+                    br
+                .col-sm-4
+                    //span.glyphicon.glyphicon-tree-deciduous.logo
+                    .image-blurred-edge
+        .bg-img
+            .title 
+                span To always know where
+                span.bold.new-line your loved ones are
+        #services.container-fluid.text-center
+            h2 SERVICES
+            h4 What we offer
+            br
+            .row.slideanim.slide
+                .col-sm-4
+                    span.glyphicon.glyphicon-home.logo-small
+                    h4 Indoor Tracking
+                    p RFID real time positioning system
+                .col-sm-4
+                    span.glyphicon.glyphicon-record.logo-small
+                    h4 Outdoor Tracking
+                    p GPS and NFC positioning system
+                .col-sm-4
+                    span.glyphicon.glyphicon-eye-open.logo-small
+                    h4 Biometric Security System
+                    p Multimodal face and voice biometric system
+                    
+        #contact.container-fluid.bg-dim
+            h2.text-center CONTACT
+            .row
+                .col-sm-5
+                    p Contact us and we'll get back to you within 24 hours.
+                    p
+                        span.glyphicon.glyphicon-map-marker  Malaysia
+                    p
+                        span.glyphicon.glyphicon-phone  +6012-3456789
+                    p
+                        span.glyphicon.glyphicon-envelope  email@email.com
+                .col-sm-7
+                    .row
+                        .col-sm-6.form-group
+                            input.form-control#name(name="name",placeholder="Name",type="text",required)
+                        .col-sm-6.form-group
+                            input.form-control#email(name="email",placeholder="Email",type="email",required)
+                    textarea.form-control#comments(name="comments",placeholder="Comment",rows="5")
+                    br
+                    .row
+                        .col-sm-12.form-group
+                            button.btn.btn-default.pull-right(type="submit") Send
+            
+        footer.container-fluid.text-center
+            a(href="#myPage", title="To Top")
+                span.glyphicon.glyphicon-chevron-up
+            p <3
+
+    script(src='../javascripts/index.js')

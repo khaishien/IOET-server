@@ -1,0 +1,41 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    height: 100%;
+}
+
+a[href^="http://maps.google.com/maps"] {
+    display: none !important;
+}
+
+a[href^="https://maps.google.com/maps"] {
+    display: none !important;
+}
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display: none;
+}
+
+.gmnoprint div {
+    background: none !important;
+}
+
+.scaling-svg-container {
+    position: relative;
+    height: 0;
+    width: 80%;
+    padding: 0;
+    padding-bottom: 100%;
+}
+
+.scaling-svg {
+ position: absolute; 
+ height: 30%; 
+ width: 80%; 
+ left: 0; 
+ top: 0;
+}

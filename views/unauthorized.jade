@@ -1,0 +1,13 @@
+﻿extends layout
+
+block content
+    body
+        .container
+            h1 Redirecting...
+            h2 #{message}
+            p redirecting to 
+                a(href="#{redirect}") page
+                | ...
+            script setTimeout(function () { window.location.href = "#{redirect}"; }, 2000);
+
+  

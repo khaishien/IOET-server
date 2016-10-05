@@ -1,0 +1,19 @@
+﻿doctype html
+html(lang="en")
+    head
+        title=title
+        meta(charset="utf-8")
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        link(rel='stylesheet', href='/stylesheets/mobile_style.css')
+        script(src='/javascripts/jquery-1.11.3.min.js')
+            
+    body
+        #map
+
+    script.
+        items = !{JSON.stringify(list).replace(/<\//g, "<\\/")}
+    script(src='/javascripts/heatmap.js')
+
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwetz2ChC5sWil0yLOadbEQA_WJzullXc&libraries=visualization&callback=initMap",async,defer)
+
+                

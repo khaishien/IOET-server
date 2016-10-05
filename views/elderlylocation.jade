@@ -1,0 +1,49 @@
+﻿extends layout
+block content
+    .container
+        nav.navbar.navbar-default.navbar-fixed-top
+                .container
+                    include ./navbar.jade
+        .container-fluid
+            .row
+                h1.header-dim.well Elderly Location
+                p.lead -----------------------
+                br
+            .row
+                .col-md-12
+                    div#map(style="width:500px;height:500px;")
+                   
+                   
+                   
+    script.
+        function initMap() {
+            var myLatLng = { lat: #{lat}, lng: #{lng} };
+    
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: myLatLng
+            });
+    
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Hello World!'
+            });
+        }
+
+        var myLatlng = new google.maps.LatLng(#{lat},#{lng});
+        var mapOptions = {
+          zoom: 13,
+          center: myLatlng
+        }
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        var marker = new google.maps.Marker({
+            position: myLatlng,
+            title:"Elderly location!"
+        });
+
+        // To add the marker to the map, call setMap();
+        marker.setMap(map);
+
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBwetz2ChC5sWil0yLOadbEQA_WJzullXc&signed_in=true&libraries=places&callback=initMap",async,defer)

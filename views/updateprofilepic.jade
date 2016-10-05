@@ -1,0 +1,23 @@
+﻿extends layout
+   
+block content
+    .container
+        nav.navbar.navbar-default.navbar-fixed-top
+                .container
+                    include ./navbar.jade
+        .container-fluid
+            .row
+                h1.header-dim.well Upload Profile Picture
+                p.lead -----------------
+                br
+                h4 Select image from your computer
+                .col-sm-4
+                    img#previewimg.img-responsive(src="http://placehold.it/300x300",alt="profile picture")
+                .col-sm-8
+                    form(action="/updateprofilepic/#{user._id}",method="post",enctype="multipart/form-data")
+                        .form-inline
+                            .form-group
+                                input(type="file",name="profilepic",id="profilepic")
+                            button.btn.btn-primary(type="submit",id="profilepic-submit") Upload Image
+                h4.red #{info}
+    script(src='../javascripts/updateprofilepic.js')

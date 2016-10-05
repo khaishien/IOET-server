@@ -1,0 +1,48 @@
+﻿
+.navbar-header
+    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#myNavbar')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+    a.navbar-brand(href='/',style="padding:6px;") 
+        span
+            img#brand-img(src="/ico/white/favicon-96x96.png",style="height:40px;")
+        span   IOET
+        
+.navbar-collapse.collapse#myNavbar
+    ul.nav.navbar-nav.navbar-right
+        if index
+            li
+                a(href='#about') ABOUT
+            li
+                a(href='#services') SERVICES
+        //li
+        //    a(href='#portfolio') PORTFOLIO
+        //li
+        //    a(href='#pricing') PRICING
+        if index
+            li
+                a(href='#contact') CONTACT
+        if (!user)
+            li
+                a(href='/register') REGISTER
+            li
+                a(href='/login') LOGIN
+        if (user)
+            li.dropdown
+                a.dropdown-toggle.uppercase(href='#', data-toggle="dropdown") #{user.userfullname}
+                    span.caret
+                ul.dropdown-menu(role="menu")
+                    if(user.userrole == "caregiver")
+                        if(user.active == true)
+                            li
+                                a(href='/caregiver/dashboard') DASHBOARD
+                    else if (user.userrole == "admin")
+                        li
+                            a(href='/admin/dashboard') DASHBOARD
+                        
+                    li
+                        a(href='/profile/#{user._id}') PROFILE
+                    li.divider
+                    li
+                        a(href='/logout') LOGOUT
